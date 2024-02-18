@@ -1,5 +1,4 @@
 package ru.mccormick.ipa;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,5 +8,4 @@ public class IpaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(IpaApplication.class, args);
 	}
-
 }
