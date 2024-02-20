@@ -6,10 +6,16 @@ import ru.mccormick.ipa.enums.Unit;
 
 public class CalculationValues {
 	
+	private int valuesId;
+	
 	private int calculationId;
+	
 	private Consumer consumer;
+	
 	private FuelType fuelType;
+	
 	private int amount;
+	
 	private Unit unit;
 	
 	public int getCalculationId() {
@@ -50,5 +56,13 @@ public class CalculationValues {
 	
 	public void setUnit(Unit unit) {
 		this.unit = unit;
+	}
+
+	public int getValuesId() {
+		return valuesId;
+	}
+
+	public void setValuesId(int valuesId) {
+		this.valuesId = valuesId;
 	}
 }

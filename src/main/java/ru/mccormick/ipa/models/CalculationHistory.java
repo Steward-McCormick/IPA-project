@@ -1,10 +1,17 @@
 package ru.mccormick.ipa.models;
 
+import java.util.List;
+
 public class CalculationHistory {
 
 	private int historyId;
 	private int userId;
-	private Calculation[] calculationHistory;
+	private List<Calculation> calculationHistory;
+	
+	public CalculationHistory(int userId, List<Calculation> calculationHistory) {
+		this.userId = userId;
+		this.calculationHistory = calculationHistory;
+	}
 	
 	public int getHistoryId() {
 		return historyId;
@@ -22,11 +29,11 @@ public class CalculationHistory {
 		this.userId = userId;
 	}
 
-	public Calculation[] getCalculationHistory() {
+	public List<Calculation> getCalculationHistory() {
 		return calculationHistory;
 	}
 
-	public void setCalculationHistory(Calculation[] calculationHistory) {
+	public void setCalculationHistory(List<Calculation> calculationHistory) {
 		this.calculationHistory = calculationHistory;
 	}
 }

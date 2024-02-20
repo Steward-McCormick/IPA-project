@@ -4,7 +4,7 @@ public class Settings {
 	
 	private int settingsId;
 	private int userId;
-	// Settings values
+	// TODO Settings values
 	
 	public int getSettingsId() {
 		return settingsId;

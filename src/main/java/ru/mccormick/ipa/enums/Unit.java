@@ -14,6 +14,18 @@ public enum Unit {
 		return title;
 	}
 	
+	public static Unit fromString(String value) {
+		if(value != null) {
+			for(Unit unit : Unit.values()) {
+				if(value.equalsIgnoreCase(unit.title)) {
+					return unit;
+				}
+			}
+		}
+		
+		throw new IllegalArgumentException("No such results");
+	}
+	
 	@Override
 	public String toString() {
 		return title;

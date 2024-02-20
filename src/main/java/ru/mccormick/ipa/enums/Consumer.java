@@ -17,6 +17,18 @@ public enum Consumer {
 		return title;
 	}
 	
+	public static Consumer fromString(String value) {
+		if(value != null) {
+			for(Consumer cons : Consumer.values()) {
+				if(value.equalsIgnoreCase(cons.title)) {
+					return cons;
+				}
+			}
+		}
+		
+		throw new IllegalArgumentException("No such values");
+	}
+	
 	@Override
 	public String toString() {
 		return title;

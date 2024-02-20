@@ -17,6 +17,18 @@ public enum FuelType {
 		return title;
 	}
 	
+	public static FuelType fromString(String value) {
+		if(value != null) {
+			for(FuelType type : FuelType.values()) {
+				if(value.equalsIgnoreCase(type.title)) {
+					return type;
+				}
+			}
+		}
+		
+		throw new IllegalArgumentException("No such values");
+	}
+	
 	@Override
 	public String toString() {
 		return title;
