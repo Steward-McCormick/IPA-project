@@ -20,9 +20,8 @@ public class CalculationMapper implements RowMapper<Calculation> {
 		
 		calculation.setCalculationId(rs.getInt("calculation_id"));
 		calculation.setUserId(rs.getInt("user_id"));
-		calculation.setCalculationValues(calculationValuesService.getValuesList(rs.getInt("calculation_id")));
-		calculation.setCalculationResult(rs.getInt("result"));
-		calculation.setCalculationDate(rs.getDate("date"));
+		//calculation.setCalculationValues(calculationValuesService.getValuesList(rs.getInt("calculation_id")));
+		calculation.setCalculationResult(rs.getInt("calculation_result"));
 		
 		return calculation;
 	}

@@ -30,6 +30,10 @@ public class CalculationValuesService {
 		calculationValuesDAO.save(calculationValues);
 	}
 	
+	public void saveCalculationValuesList(List<CalculationValues> list) {
+		calculationValuesDAO.saveCalculationValuesList(list);
+	}
+	
 	public void update(CalculationValues calculationValues, int id) {
 		calculationValuesDAO.update(calculationValues, id);
 	}

@@ -1,6 +1,5 @@
 package ru.mccormick.ipa.models;
 
-import java.sql.Date;
 import java.util.List;
 
 public class Calculation {
@@ -9,13 +8,21 @@ public class Calculation {
 	
 	private int userId;
 	
-	private int valuesId;
+	//private int valuesId;
 	
-	private List<CalculationValues> calculationValues;
+	private List<CalculationValues> calculationValues; // is not a column in db
 	
 	private int calculationResult;
 	
-	private Date calculationDate;
+	//private Date calculationDate;
+	
+	public Calculation() {}
+	
+	public Calculation(int userId, int calculationResult) {
+		this.userId = userId;
+		this.calculationResult = calculationResult;
+		//this.calculationDate = calculationDate;
+	}
 	
 	public int getCalculationId() {
 		return calculationId;
@@ -49,19 +56,19 @@ public class Calculation {
 		this.calculationResult = calculationResult;
 	}
 
-	public Date getCalculationDate() {
-		return calculationDate;
-	}
+//	public Date getCalculationDate() {
+//		return calculationDate;
+//	}
+//
+//	public void setCalculationDate(Date calculationDate) {
+//		this.calculationDate = calculationDate;
+//	}
 
-	public void setCalculationDate(Date calculationDate) {
-		this.calculationDate = calculationDate;
-	}
-
-	public int getValuesId() {
-		return valuesId;
-	}
-
-	public void setValuesId(int valuesId) {
-		this.valuesId = valuesId;
-	}
+//	public int getValuesId() {
+//		return valuesId;
+//	}
+//
+//	public void setValuesId(int valuesId) {
+//		this.valuesId = valuesId;
+//	}
 }

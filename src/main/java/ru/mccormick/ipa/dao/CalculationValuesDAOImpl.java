@@ -23,7 +23,7 @@ public class CalculationValuesDAOImpl implements CalculationValuesDAO {
 
 	@Override
 	public CalculationValues findValesById(int id) {
-		String query = "SELECT * FROM Calculation_Values WHERE id=?";
+		String query = "SELECT * FROM Calculation_Values WHERE values_id=?";
 		
 		return jdbcTemplate.query(query, new PreparedStatementSetter() {
 			
@@ -50,10 +50,17 @@ public class CalculationValuesDAOImpl implements CalculationValuesDAO {
 							values.getFuelType().toString(), values.getAmount(), 
 							values.getUnit().toString());
 	}
+	
+	@Override
+	public void saveCalculationValuesList(List<CalculationValues> list) {
+		for(CalculationValues values : list) {
+			save(values);
+		}
+	}
 
 	@Override
 	public void update(CalculationValues values, int id) {
-		String query = "UPDATE Calculation_Values calculation_id=?, consumer=?, "
+		String query = "UPDATE Calculation_Values SET calculation_id=?, consumer=?, "
 						+ "fuel_type=?, amount=?, unit=? WHERE id=?";
 		
 		jdbcTemplate.update(query, values.getCalculationId(), values.getConsumer().toString(), 
@@ -63,7 +70,7 @@ public class CalculationValuesDAOImpl implements CalculationValuesDAO {
 
 	@Override
 	public void delete(int id) {
-		String query = "DELETE FROM Calculation_Values WHERE id=?";
+		String query = "DELETE FROM Calculation_Values WHERE values_id=?";
 		
 		jdbcTemplate.update(query, id);
 	}

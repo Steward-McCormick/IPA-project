@@ -1,12 +1,12 @@
 package ru.mccormick.ipa.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import ru.mccormick.ipa.dao.SettingsDAO;
 import ru.mccormick.ipa.models.Settings;
 
-@Service
+@Component
 public class SettingsService {
 
 	private SettingsDAO settingsDAO;

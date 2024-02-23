@@ -12,6 +12,8 @@ public interface CalculationValuesDAO {
 	
 	public void save(CalculationValues values);
 	
+	public void saveCalculationValuesList(List<CalculationValues> list);
+	
 	public void update(CalculationValues values, int id);
 	
 	public void delete(int id);

@@ -18,6 +18,15 @@ public class CalculationValues {
 	
 	private Unit unit;
 	
+	public CalculationValues() {}
+	
+	public CalculationValues(Consumer consumer, FuelType fuelType, int amount, Unit unit) {
+		this.consumer = consumer;
+		this.fuelType = fuelType;
+		this.amount = amount;
+		this.unit = unit;
+	}
+	
 	public int getCalculationId() {
 		return calculationId;
 	}
@@ -64,5 +73,13 @@ public class CalculationValues {
 
 	public void setValuesId(int valuesId) {
 		this.valuesId = valuesId;
+	}
+	
+	@Override
+	public String toString() {
+		return "CalculationValues{"
+				+ consumer.toString() + "; " + fuelType.toString() + ";" 
+				+ amount + ";" + unit.toString()
+				+ "}";
 	}
 }

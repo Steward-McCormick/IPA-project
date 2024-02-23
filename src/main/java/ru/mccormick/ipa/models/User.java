@@ -8,6 +8,7 @@ public class User {
 	
 	private String password;
 	
+	// Not db`s columns
 	private int settingsId;
 	
 	private Settings settings;

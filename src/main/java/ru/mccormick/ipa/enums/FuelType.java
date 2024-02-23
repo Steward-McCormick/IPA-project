@@ -1,11 +1,19 @@
 package ru.mccormick.ipa.enums;
 
 public enum FuelType {
-	COAL ("Уголь"),
-	NATURAL_GAS ("Натуральный газ"),
-	LPG ("Сжиженный нефтяной газ"),
-	PATROL ("Бензин"),
-	DIESEL ("Дизельное топливо");
+	RAW_OIL("Сырая нефть"),
+	GAS_CONDENSATE("Газовый конденсат"),
+	AUTOMOBILE_GASOLINE("Бензин автомобильный"),
+	DIESEL_FUEL("Дизельное топливо"),
+	LIGHTING_KEROSENE("Керосин осветительный"),
+	FUEL_OIL("Топливо нефтяное(мазут)"),
+	PROPANE_AND_BUTANE("Пропан и бутан сж."),
+	COMPRESSED_HC_GASES("Углеводородные газы сж."),
+	BITUMEN("Битум"),
+	COKING_COAL("Коксующийся уголь"),
+	COAL("Уголь каменный"),
+	NATURAL_GAS("Природный газ"),
+	FIREWOOD("Дрова для отопления");
 	
 	private String title;
 	

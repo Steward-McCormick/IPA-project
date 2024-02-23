@@ -1,11 +1,8 @@
 package ru.mccormick.ipa.enums;
 
 public enum Consumer {
-	COAL ("Уголь"),
-	NATURAL_GAS ("Натуральный газ"),
-	LPG ("Сжиженный нефтяной газ"),
-	PATROL ("Бензин"),
-	DIESEL ("Дизельное топливо");
+	UNIT("Установки"),
+	AUTOMOBILE_TRANSPORT("Автомобильный транспорт");
 	
 	private String title;
 	

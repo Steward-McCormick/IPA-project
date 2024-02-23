@@ -23,7 +23,7 @@ public class CalculationDAOImpl implements CalculationDAO {
 
 	@Override
 	public Calculation findCalculationById(int id) {
-		String query = "SELECT * FROM Calculation WHERE id=?";
+		String query = "SELECT * FROM Calculation WHERE calculation_id=?";
 		
 		return jdbcTemplate.query(query, new PreparedStatementSetter() {
 			
@@ -38,28 +38,32 @@ public class CalculationDAOImpl implements CalculationDAO {
 	public List<Calculation> findAllUsersCalculations(int userId) {
 		String query = "SELECT * FROM Calculation WHERE user_id=?";
 		
-		return jdbcTemplate.query(query, new CalculationMapper());
+		return jdbcTemplate.query(query, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, userId);
+			}
+		}, new CalculationMapper());
 	}
 
 	@Override
 	public void save(Calculation calculation) {
-		String query = "INSERT INTO Calculation(user_id, values_id, result, date) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO Calculation(user_id, calculation_result) VALUES(?, ?)";
 		
-		jdbcTemplate.update(query, calculation.getUserId(), calculation.getValuesId(), 
-							calculation.getCalculationResult(), calculation.getCalculationDate());
+		jdbcTemplate.update(query, calculation.getUserId(), calculation.getCalculationResult());
 	}
 
 	@Override
 	public void update(Calculation calculation, int id) {
-		String query = "UPDATE Calculation user_id=?, values_id=?, result=?, date=?";
+		String query = "UPDATE Calculation SET user_id=?, calculation_result=? WHERE calculation_id=?";
 		
-		jdbcTemplate.update(query, calculation.getUserId(), calculation.getValuesId(), 
-							calculation.getCalculationResult(), id);
+		jdbcTemplate.update(query, calculation.getUserId(), calculation.getCalculationResult(), id);
 	}
 
 	@Override
 	public void delete(int id) {
-		String query = "DELETE FROM Calculation WHERE id=?";
+		String query = "DELETE FROM Calculation WHERE calculation_id=?";
 		
 		jdbcTemplate.update(query, id);
 	}
