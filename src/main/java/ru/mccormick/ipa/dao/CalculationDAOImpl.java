@@ -1,11 +1,14 @@
 package ru.mccormick.ipa.dao;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
@@ -48,10 +51,17 @@ public class CalculationDAOImpl implements CalculationDAO {
 	}
 
 	@Override
-	public void save(Calculation calculation) {
-		String query = "INSERT INTO Calculation(user_id, calculation_result) VALUES(?, ?)";
+	public int save(Calculation calculation) {
+		String query = "INSERT INTO Calculation(user_id, calculation_result) VALUES(?, ?) RETURNING calculation_id";
 		
-		jdbcTemplate.update(query, calculation.getUserId(), calculation.getCalculationResult());
+		return jdbcTemplate.query(query, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, calculation.getUserId());
+				ps.setDouble(2, calculation.getCalculationResult());
+			}
+		}, new IdMapper()).stream().findAny().orElse(null);
 	}
 
 	@Override

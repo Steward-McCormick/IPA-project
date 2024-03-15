@@ -22,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findUserById(int id) {
-		String query = "SELECT * FROM User WHERE user_id=?";
+		String query = "SELECT * FROM Users WHERE user_id=?";
 		
 		return jdbcTemplate.query(query, new PreparedStatementSetter() {
 			
@@ -36,7 +36,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User findUserByEmail(String email) {
-		String query = "SELECT * FROM User WHERE email=?";
+		String query = "SELECT * FROM Users WHERE email=?";
 		
 		return jdbcTemplate.query(query, new PreparedStatementSetter() {
 			
@@ -50,21 +50,21 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void save(User user) {
-		String query = "INSERT INTO User(email, password) VALUES(?, ?)";
+		String query = "INSERT INTO Users(email, password) VALUES(?, ?)";
 		
 		jdbcTemplate.update(query, user.getEmail(), user.getPassword());
 	}
 
 	@Override
 	public void update(User user, int id) {
-		String query = "UPDATE User SET email=?, password=? WHERE id=?";
+		String query = "UPDATE Users SET email=?, password=? WHERE user_id=?";
 		
 		jdbcTemplate.update(query, user.getEmail(), user.getPassword(), id);
 	}
 
 	@Override
 	public void delete(int id) {
-		String query = "DELETE FROM User WHERE id=?";
+		String query = "DELETE FROM User WHERE user_id=?";
 		
 		jdbcTemplate.update(query, id);
 	}

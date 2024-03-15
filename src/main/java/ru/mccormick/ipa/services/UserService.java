@@ -15,8 +15,9 @@ public class UserService {
 	private SettingsService settingsService;
 	
 	@Autowired
-	public UserService(UserDAO userDAO) {
+	public UserService(UserDAO userDAO, SettingsService settingsService) {
 		this.userDAO = userDAO;
+		this.settingsService = settingsService;
 	}
 	
 	public User findById(int id) {

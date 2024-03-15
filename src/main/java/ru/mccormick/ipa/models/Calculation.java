@@ -12,7 +12,7 @@ public class Calculation {
 	
 	private List<CalculationValues> calculationValues; // is not a column in db
 	
-	private int calculationResult;
+	private double calculationResult;
 	
 	//private Date calculationDate;
 	
@@ -48,11 +48,11 @@ public class Calculation {
 		this.calculationValues = calculationValues;
 	}
 
-	public int getCalculationResult() {
+	public double getCalculationResult() {
 		return calculationResult;
 	}
 
-	public void setCalculationResult(int calculationResult) {
+	public void setCalculationResult(double calculationResult) {
 		this.calculationResult = calculationResult;
 	}
 

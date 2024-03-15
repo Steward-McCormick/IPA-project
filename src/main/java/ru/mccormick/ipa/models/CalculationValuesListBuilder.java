@@ -1,4 +1,4 @@
-package ru.mccormick.ipa.utils;
+package ru.mccormick.ipa.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import ru.mccormick.ipa.enums.Consumer;
 import ru.mccormick.ipa.enums.FuelType;
 import ru.mccormick.ipa.enums.Unit;
-import ru.mccormick.ipa.models.CalculationValues;
 
 @Component
 public class CalculationValuesListBuilder {
@@ -30,7 +29,7 @@ public class CalculationValuesListBuilder {
 		String[] amounts = amount.split(",");
 		String[] units = unit.split(",");
 		
-		for(int i = 0; i < consumers.length - 1; i++) {
+		for(int i = 0; i < consumers.length; i++) {
 			list.add(new CalculationValues(Consumer.fromString(consumers[i]), FuelType.fromString(fuelTypes[i]),
 					Integer.parseInt(amounts[i]), Unit.fromString(units[i])));
 		}

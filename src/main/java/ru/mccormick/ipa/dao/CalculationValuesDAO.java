@@ -12,7 +12,7 @@ public interface CalculationValuesDAO {
 	
 	public void save(CalculationValues values);
 	
-	public void saveCalculationValuesList(List<CalculationValues> list);
+	public void saveCalculationValuesList(List<CalculationValues> list, int calculation_id);
 	
 	public void update(CalculationValues values, int id);
 	

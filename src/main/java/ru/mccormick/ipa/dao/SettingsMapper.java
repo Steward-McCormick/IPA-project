@@ -21,10 +21,10 @@ public class SettingsMapper implements RowMapper<Settings> {
 		Array rawOil = rs.getArray("raw_oil");
 		settings.setRawOil((Double[])rawOil.getArray());
 	
-		Array gasCondensat = rs.getArray("gas_condensat");
+		Array gasCondensat = rs.getArray("gas_condensate");
 		settings.setGasCondensate((Double[])gasCondensat.getArray());
 		
-		Array automobileGasoline = rs.getArray("automobile_gasoline");
+		Array automobileGasoline = rs.getArray("automobiles_gasoline");
 		settings.setAutomobilesGasoline((Double[])automobileGasoline.getArray());
 		
 		Array dieselFuel = rs.getArray("diesel_fuel");
@@ -36,7 +36,7 @@ public class SettingsMapper implements RowMapper<Settings> {
 		Array fuelOil = rs.getArray("fuel_oil");
 		settings.setFuelOil((Double[])fuelOil.getArray());
 		
-		Array propaneButane = rs.getArray("propane_butane");
+		Array propaneButane = rs.getArray("propane_and_butane");
 		settings.setPropaneAndButane((Double[])propaneButane.getArray());
 		
 		Array compressedHcGases = rs.getArray("compressed_hc_gases");

@@ -1,28 +1,35 @@
 package ru.mccormick.ipa.enums;
 
 public enum FuelType {
-	RAW_OIL("Сырая нефть"),
-	GAS_CONDENSATE("Газовый конденсат"),
-	AUTOMOBILE_GASOLINE("Бензин автомобильный"),
-	DIESEL_FUEL("Дизельное топливо"),
-	LIGHTING_KEROSENE("Керосин осветительный"),
-	FUEL_OIL("Топливо нефтяное(мазут)"),
-	PROPANE_AND_BUTANE("Пропан и бутан сж."),
-	COMPRESSED_HC_GASES("Углеводородные газы сж."),
-	BITUMEN("Битум"),
-	COKING_COAL("Коксующийся уголь"),
-	COAL("Уголь каменный"),
-	NATURAL_GAS("Природный газ"),
-	FIREWOOD("Дрова для отопления");
+	RAW_OIL("Сырая нефть", "raw_oil"),
+	GAS_CONDENSATE("Газовый конденсат", "gas_condensate"),
+	AUTOMOBILE_GASOLINE("Бензин автомобильный", "automobiles_gasoline"),
+	DIESEL_FUEL("Дизельное топливо", "diesel_fuel"),
+	LIGHTING_KEROSENE("Керосин осветительный", "lighting_kerosene"),
+	FUEL_OIL("Топливо нефтяное(мазут)", "fuel_oil"),
+	PROPANE_AND_BUTANE("Пропан и бутан сж.", "propane_and_butane"),
+	COMPRESSED_HC_GASES("Углеводородные газы сж.", "compressed_hc_gases"),
+	BITUMEN("Битум", "bitumen"),
+	COKING_COAL("Коксующийся уголь", "coking_coal"),
+	COAL("Уголь каменный", "coal"),
+	NATURAL_GAS("Природный газ", "natural_gas"),
+	FIREWOOD("Дрова для отопления", "firewood");
 	
 	private String title;
 	
-	FuelType(String title) {
+	private String columnName;
+	
+	FuelType(String title, String columnName) {
 		this.title = title;
+		this.columnName = columnName;
 	}
 	
 	public String getTitle() {
 		return title;
+	}
+	
+	public String getColumnName() {
+		return columnName;
 	}
 	
 	public static FuelType fromString(String value) {

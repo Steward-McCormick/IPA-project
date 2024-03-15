@@ -10,7 +10,7 @@ public interface CalculationDAO {
 	
 	public List<Calculation> findAllUsersCalculations(int userId);
 	
-	public void save(Calculation calculation);
+	public int save(Calculation calculation);
 	
 	public void update(Calculation calculation, int id);
 	

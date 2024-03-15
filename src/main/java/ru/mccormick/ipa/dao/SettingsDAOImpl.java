@@ -86,7 +86,7 @@ public class SettingsDAOImpl implements SettingsDAO {
 	@Override
 	public void update(Settings settings, int id) {
 		String query = "UPDATE Settings SET user_id=? "
-				+ "raw_oil=?, gas_condensat=?, automobile_gasoline=?, diesel_fuel=?, lighting_kerosene=?, fuel_oil=?, "
+				+ "raw_oil=?, gas_condensate=?, automobile_gasoline=?, diesel_fuel=?, lighting_kerosene=?, fuel_oil=?, "
 				+ "propane_butane=?, compressed_hc_gases=?, bitumen=?, coking_coal=?, coal=?, natural_gas=?, firewood=? "
 				+ "WHERE settings_id=?";
 		

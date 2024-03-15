@@ -8,7 +8,7 @@
 	</head>
 	
 	<body>
-		<form th:method="POST" class="form" th:action="@{/test}" th:object="${builder}">
+		<form th:method="POST" class="form" th:action="@{/hello}" th:object="${builder}">
 		
 			<select id="consumers" th:field="*{consumer}">
 				<option style="display: none;" value="">Потребитель</option>
@@ -37,8 +37,8 @@
 			
 			<select id="unit" th:field="*{unit}">
 				<option style="display: none;" value="">Единицы измерения</option>
-				<option value="Тонны">Тонны</option>
-				<option value="м3">Метры кубические</option>
+				<option value="Тонны/год">Тонны/год</option>
+				<option value="м3/год">Метры кубические/год</option>
 			</select>
 			
 			<br/>
@@ -70,8 +70,8 @@
 			
 			<select id="unit" th:field="*{unit}">
 				<option style="display: none;" value="">Единицы измерения</option>
-				<option value="Тонны">Тонны</option>
-				<option value="м3">Метры кубические</option>
+				<option value="Тонны/год">Тонны/год</option>
+				<option value="м3/год">Метры кубические/год</option>
 			</select>
 			
 			<input type="submit" value="send">

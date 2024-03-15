@@ -1,8 +1,8 @@
 package ru.mccormick.ipa.enums;
 
 public enum Unit {
-	TONS ("Тонны"),
-	CUBIC_METERS ("м3");
+	TONS ("Тонны/год"),
+	CUBIC_METERS ("м3/год");
 	
 	private String title;
 	

@@ -52,8 +52,9 @@ public class CalculationValuesDAOImpl implements CalculationValuesDAO {
 	}
 	
 	@Override
-	public void saveCalculationValuesList(List<CalculationValues> list) {
+	public void saveCalculationValuesList(List<CalculationValues> list, int calculation_id) {
 		for(CalculationValues values : list) {
+			values.setCalculationId(calculation_id);
 			save(values);
 		}
 	}

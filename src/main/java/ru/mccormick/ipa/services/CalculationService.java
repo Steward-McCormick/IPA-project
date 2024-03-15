@@ -31,8 +31,8 @@ public class CalculationService {
 		return new CalculationHistory(userId, getAllUsersCalc(userId));
 	}
 	
-	public void save(Calculation calculation) {
-		calculationDAO.save(calculation);
+	public int save(Calculation calculation) {
+		return calculationDAO.save(calculation);
 	}
 	
 	public void update(Calculation calculation, int id) {
