@@ -11,6 +11,6 @@ public interface SettingsDAO {
 	public void save(Settings settings);
 	
 	public void update(Settings settings, int id);
-	
+		
 	public void delete(int id);
 }

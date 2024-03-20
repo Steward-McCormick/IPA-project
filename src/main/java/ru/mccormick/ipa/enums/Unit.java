@@ -15,15 +15,17 @@ public enum Unit {
 	}
 	
 	public static Unit fromString(String value) {
-		if(value != null) {
+		if(value == null) {
+			throw new NullPointerException();
+		}
+		else {
 			for(Unit unit : Unit.values()) {
 				if(value.equalsIgnoreCase(unit.title)) {
 					return unit;
 				}
 			}
+			throw new IllegalArgumentException("No such results");
 		}
-		
-		throw new IllegalArgumentException("No such results");
 	}
 	
 	@Override

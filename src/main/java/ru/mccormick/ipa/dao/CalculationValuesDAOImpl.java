@@ -38,7 +38,13 @@ public class CalculationValuesDAOImpl implements CalculationValuesDAO {
 	public List<CalculationValues> getListOfCalculationValues(int calculationId) {
 		String query = "SELECT * FROM Calculation_Values WHERE calculation_id=?";
 		
-		return jdbcTemplate.query(query, new CalculationValuesMapper());
+		return jdbcTemplate.query(query, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setInt(1, calculationId);
+			}
+		} ,new CalculationValuesMapper());
 	}
 
 	@Override

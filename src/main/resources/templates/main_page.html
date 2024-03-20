@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru" id="html">
+<head>
+    <meta charset="UTF-8"/>
+    
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="/css/main_page_style.css">
+    <script src="/js/main-page-script.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="main-page">
+	<div class="main-page">
+		<div class="left-sidebar" id="left-sidebar">
+			<div class="employee-block">
+				<div class="employee-avatar">
+					<img src="/svg/employee.svg" style="height: 50px; width: 50px;">
+				</div>
+				<p style="font-size: 20px; margin-left: 10px;">Employee</p>
+			</div>
+
+			<div class="sidebar-fields">
+				<div class="sidebar-field" style="cursor: default; background: #d5d5d5;">
+					<img src="/svg/calculation.svg" class="sidebar-field-img">
+					<p style="font-size: 20px; margin-left: 9px;">Расчет</p>
+				</div>
+				<a th:href="@{\history\{id}(id=${user.userId})}" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/history.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">История</p>
+					</div>
+				</a>
+				<a th:href="@{\settings\{id}(id=${user.userId})}" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/settings.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Настройки</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="exit-field">
+				<a th:href="@{/logout}" style="width: 100%; text-decoration: none; color: black;">
+					<div class="sidebar-exit">
+						<img src="/svg/exit.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Выход</p>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="calculation-area">
+			<p class="main-header">Главная страница</p>
+
+			<div class="calculation-form" id="calculation-form">
+				<form class="form" method="POST" action="/calculate" id="form">
+					<div class="calculation-form-fields">
+						<select class="form-field" id="consumer" name="consumer" required>
+							<option style="display: none;" value="">Потребитель</option>
+							<option value="Установки">Установки</option>
+							<option value="Автомобильный транспорт">Автомобильный транспорт</option>
+						</select>
+						<select class="form-field" id="fuelType" name="fuelType" required>
+							<option style="display: none;" value="">Топливо</option>
+							<option value="Сырая нефть">Сырая нефть</option>
+							<option value="Газовый конденсат">Газовый конденсат</option>
+							<option value="Бензин автомобильный">Бензин автомобильный</option>
+							<option value="Дизельное топливо">Дизельное топливо</option>
+							<option value="Керосин осветительный">Керосин осветительный</option>
+							<option value="Топливо нефтяное(мазут)">Топливо нефтяное(мазут)</option>
+							<option value="Пропан и бутан сж.">Пропан и бутан сж.</option>
+							<option value="Углеводородные газы сж.">Углеводородные газы сж.</option>
+							<option value="Битум">Битум</option>
+							<option value="Коксующийся уголь">Коксующийся уголь</option>
+							<option value="Уголь каменный">Уголь каменный</option>
+							<option value="Природный газ">Природный газ</option>
+							<option value="Дрова для отопления">Дрова для отопления</option>
+						</select>
+				
+						<input type="number" placeholder="Количество" class="form-field" id="amount" name="amount" required>
+				
+						<select class="form-field" id="unit" name="unit" required>
+							<option style="display: none;" value="">Единицы измерения</option>
+							<option value="Тонны/год">Тонны/год</option>
+							<option value="м3/год">Метры кубические/год</option>
+						</select>
+				
+						<a href="#" onclick="delete_calculation(this)"><img src="/svg/cross.svg" class="form-cross" style="width: 34px; height: 34px"></a>
+					</div>
+				</form>
+			</div>
+
+			<div class="calculation-footer">
+				<div class="add-calculate">
+					<p style="text-align: center; vertical-align: auto; margin-left: 26px; font-size: 20px; font-weight: 500;">Добавить в расчет</p>
+					<!-- <img src="img/plus.svg" alt="" style="order: 999; margin-left: auto; margin-right: 33px;"> -->
+					<a href="#" class="add-calculate-button" onclick="addToCalcList()"><img src="/svg/plus.svg"></a>
+				</div>
+				<input type="submit" form="form" class="submit" value="Выполнить расчет"/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

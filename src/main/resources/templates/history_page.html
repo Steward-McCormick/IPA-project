@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru" id="html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="/css/history_page_style.css">
+    <script src="/js/history-page-script.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="main-page">
+		<div class="left-sidebar" id="left-sidebar">
+			<div class="employee-block">
+				<div class="employee-avatar">
+					<img src="/svg/employee.svg" style="height: 50px; width: 50px;">
+				</div>
+				<p style="font-size: 20px; margin-left: 10px;">Employee</p>
+			</div>
+
+			<div class="sidebar-fields">
+				<a th:href="@{/}" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/calculation.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Расчет</p>
+					</div>
+				</a>
+				<div class="sidebar-field" style="cursor: default; background: #d5d5d5;">
+					<img src="/svg/history.svg" class="sidebar-field-img">
+					<p style="font-size: 20px; margin-left: 9px;">История</p>
+				</div>
+				</a>
+				<a href="#" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/settings.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Настройки</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="exit-field">
+				<a th:href="@{/logout}" style="width: 100%; text-decoration: none; color: black;">
+					<div class="sidebar-exit">
+						<img src="/svg/exit.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Выход</p>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="history-area">
+			<p class="main-header">История расчетов</p>
+			<div class="history-field">
+				<div class="headers">
+					<p class="header">Потребитель</p>
+					<p class="header">Вид топлива</p>
+					<p class="header">Количество</p>
+					<p class="header">Единицы</p>
+					<p class="header">Результат</p>
+				</div>
+			
+
+				<div class="calc-field">
+					<div class="row-list">  
+						<div class="row" th:each="calc : ${calcList}"> <!-- iteration calculation list -->
+							<div class="calculation">
+								<div class="values-list" th:each="values : ${calc.calculationValues}"> <!-- iteration calculation values list -->
+									<p class="value" th:text="${values.consumer}">Автомобильный транспорт</p>
+									<p class="value" th:text="${values.fuelType}">Битум</p>
+									<p class="value" th:text="${values.amount}">2134567</p>
+									<p class="value" th:text="${values.unit}">тонн/год</p>
+								</div>
+							</div>
+							<p th:text="${calc.calculationResult}">45678</p>
+						</div>
+
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

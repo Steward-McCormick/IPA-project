@@ -1,0 +1,212 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #E5E5E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+input {
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+    line-height: normal;
+    border-radius: 4px;
+    border: 2px solid #7B7B7B;
+}
+
+.register-form-container{
+    max-width: 500px;
+    max-height: 570px;
+    padding: 32px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+
+
+.form-title {
+    text-align: center;
+}
+
+.head-title {
+    color: #2E4581;
+    font-family: JetBrains Mono;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.sub-title {
+    color: #3B569C;
+    font-family: JetBrains Mono;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+} */
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+	font-family: 'JetBrains Mono', monospace;
+	overflow: hidden
+}
+
+.register-form-container {
+    max-width: 400px;
+    max-height: 570px;
+	padding: 32px;
+	border-radius: 10px;
+	box-shadow: 0 4px 16px #ccc;
+	background: #FFF;
+}
+
+.form-input, .form-button {
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 20px;
+}
+
+.head-title {
+	margin-bottom: 50px;
+	color: #2E4581;
+    font-family: JetBrains Mono;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+}
+
+.sub-title {
+    color: #3B569C;
+    font-family: JetBrains Mono;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form-title {
+	text-align: center;
+}
+
+.form-submit {
+	display: flex;
+	width: 308px;
+	padding: 17px 121px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.form-field {
+	position: relative;
+	margin-bottom: 32px;
+}
+
+.form-label {
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	color: #878787;
+	transition: 0.3s;
+	margin-bottom: -20px;
+}
+
+.form-input {
+	width: 100%;
+	padding: 0 0 10px 0;
+	border: none;
+	border-bottom: 2px solid #878787;
+	outline: none;
+	transition: 0.3s;
+	background: #FFF;
+}
+
+.form-input:focus {
+	border-bottom: 2px solid #2E4581;
+}
+
+.form-button {
+	display: flex;
+	width: 308px;
+	padding: 17px 121px;
+	margin-right: 150px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border-radius: 10px;
+	background: #5678D0;
+	color: #FFF;
+	text-align: center;
+	font-family: JetBrains Mono;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.form-button:focus,
+.form-button:hover {
+	background: rgba(86, 120, 208, 0.9)
+}
+
+#password {
+	position: relative;
+}
+
+.password-control {
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url(/svg/not_view.svg) 0 0 no-repeat;
+}
+
+.password-control.view {
+	background: url(/svg/view.svg) 0 0 no-repeat;
+}
+
+.post-form-info {
+	color: #515151;
+	font-family: JetBrains Mono;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 10px;
+}
+
+.forget-login-password-text {
+	color: red;
+}
+
+.forget-login-password {
+	position: relative;
+	display: none;
+}
+
+.forget-cross{
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 38px;
+	height: 38px;
+	background: url(/svg/cross.svg) 0 0 no-repeat;
+    transition: transform .3s ease-in-out;
+}

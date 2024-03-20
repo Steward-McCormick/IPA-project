@@ -1,24 +1,43 @@
-package ru.mccormick.ipa.utils;
+package ru.mccormick.ipa.models;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ru.mccormick.ipa.enums.FuelType;
-import ru.mccormick.ipa.models.CalculationValues;
-import ru.mccormick.ipa.models.Settings;
+import ru.mccormick.ipa.services.SettingsService;
+import ru.mccormick.ipa.services.UserService;
 
+@Component
 public class GreenhouseGasesCalculator {
 	
 	private Settings settings;
 	
+	private String userEmail;
+	
 	private List<CalculationValues> calculationValues;
 	
-	public GreenhouseGasesCalculator(Settings settings, List<CalculationValues> calculationValues) {
-		this.settings = settings;
-		this.calculationValues = calculationValues;
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private SettingsService settingsService;
+	
+	
+	public GreenhouseGasesCalculator() {}
+	
+	public Calculation getCalculation() {
+		setSettings();
+		Calculation calculation = new Calculation();
+		calculation.setUserId(userService.findByEmail(userEmail).getUserId());
+		calculation.setCalculationValues(calculationValues);
+		calculation.setCalculationResult(calculate());
+		
+		return calculation;
 	}
 	
-	public double calculate() {
+	private double calculate() {
 		double result = 0;
 		for(CalculationValues values : calculationValues) {
 			result += calculateItaration(values);
@@ -38,7 +57,10 @@ public class GreenhouseGasesCalculator {
 		
 		double amount = values.getAmount();
 		
-		return amount * k1 * TNV * k2 * (44/12);
+		System.out.println(TNV + ", " + k1 + ", " + k2 + ", " + amount);
+		System.out.println((amount * k1 * TNV * k2 * (44.0/12.0)) / 1000.0);
+		
+		return Math.round( (amount * k1 * TNV * k2 * (44.0/12.0)) / 1000.0 );
 	}
 	
 	private Double[] getConstantsArray(FuelType fuel) {
@@ -72,6 +94,27 @@ public class GreenhouseGasesCalculator {
 			default:
 				throw new IllegalArgumentException("No such results");
 		}
+	}
+	
+	private void setSettings() {
+		User user = userService.findByEmail(userEmail);
+		settings = settingsService.findByUserId(user.getUserId());
+	}
+	
+	public String getUserEmail() {
+		return userEmail;
+	}
+	
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+	
+	public List<CalculationValues> getCalculationValues() {
+		return calculationValues;
+	}
+	
+	public void setCalculationValues(List<CalculationValues> calculationValues) {
+		this.calculationValues = calculationValues;
 	}
 }
 

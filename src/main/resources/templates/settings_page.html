@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru" id="html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="/css/settings_page_style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="main-page">
+		<div class="left-sidebar" id="left-sidebar">
+			<div class="employee-block">
+				<div class="employee-avatar">
+					<img src="/svg/employee.svg" style="height: 50px; width: 50px;">
+				</div>
+				<p style="font-size: 20px; margin-left: 10px;">Employee</p>
+			</div>
+
+			<div class="sidebar-fields">
+				<a th:href="@{/}" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/calculation.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Расчет</p>
+					</div>
+				</a>
+				<div class="sidebar-field" style="cursor: default; background: #d5d5d5;">
+					<img src="/svg/history.svg" class="sidebar-field-img">
+					<p style="font-size: 20px; margin-left: 9px;">История</p>
+				</div>
+				</a>
+				<a href="#" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/settings.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Настройки</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="exit-field">
+				<a th:href="@{/logout}" style="width: 100%; text-decoration: none; color: black;">
+					<div class="sidebar-exit">
+						<img src="/svg/exit.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Выход</p>
+					</div>
+				</a>
+			</div>
+		</div>
+
+		<div class="settings-field">
+			<p class="main-header">Настройки</p>
+
+			<div class="settings">
+				<form th:method="PATCH" th:object="${settings}" th:action="@{/settings/{id}(id=${id})}" id="form">
+					<div class="settings-headers">
+						<p class="header">Вид топлива</p>
+						<p class="header">ТНЗ, ТДж/тыс.тонн</p>
+						<p class="header">К<sub>1</sub>, ед.</p>
+						<p class="header">К<sub>2</sub>, тонн/ТДж</p>
+					</div>
+
+					<br>
+					
+					<input type="hidden" th:value="${userSet.settingsId}" th:name="settingsId">
+
+					<div class="settings-row">
+						<p class="value">Сырая нефть</p>
+						<input type="number" class="value" th:value="${userSet.rawOil[0]}" th:name="rawOil[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.rawOil[1]}" th:name="rawOil[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.rawOil[2]}" th:name="rawOil[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Газовый конденсат</p>
+						<input type="number" class="value" th:value="${userSet.gasCondensate[0]}" th:name="gasCondensate[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.gasCondensate[1]}" th:name="gasCondensate[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.gasCondensate[2]}" th:name="gasCondensate[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Бензин автомобильный</p>
+						<input type="number" class="value" th:value="${userSet.automobilesGasoline[0]}" th:name="automobilesGasoline[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.automobilesGasoline[1]}" th:name="automobilesGasoline[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.automobilesGasoline[2]}" th:name="automobilesGasoline[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Дизельное топливо</p>
+						<input type="number" class="value" th:value="${userSet.dieselFuel[0]}" th:name="dieselFuel[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.dieselFuel[1]}" th:name="dieselFuel[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.dieselFuel[2]}" th:name="dieselFuel[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Керосин осветительный и пр.</p>
+						<input type="number" class="value" th:value="${userSet.lightingKerosene[0]}" th:name="lightingKerosene[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.lightingKerosene[1]}" th:name="lightingKerosene[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.lightingKerosene[2]}" th:name="lightingKerosene[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Топливо нефтяное(мазут)</p>
+						<input type="number" class="value" th:value="${userSet.fuelOil[0]}" th:name="fuelOil[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.fuelOil[1]}" th:name="fuelOil[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.fuelOil[2]}" th:name="fuelOil[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Пропан и бутан сж.</p>
+						<input type="number" class="value" th:value="${userSet.propaneAndButane[0]}" th:name="propaneAndButane[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.propaneAndButane[1]}" th:name="propaneAndButane[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.propaneAndButane[2]}" th:name="propaneAndButane[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Углеводородные газы сж.</p>
+						<input type="number" class="value" th:value="${userSet.compressedHydrocarbonGases[0]}" th:name="compressedHydrocarbonGases[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.compressedHydrocarbonGases[1]}" th:name="compressedHydrocarbonGases[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.compressedHydrocarbonGases[2]}" th:name="compressedHydrocarbonGases[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Битум нефтяной и сланцевый</p>
+						<input type="number" class="value" th:value="${userSet.bitumen[0]}" th:name="bitumen[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.bitumen[1]}" th:name="bitumen[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.bitumen[2]}" th:name="bitumen[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Коксующийся уголь</p>
+						<input type="number" class="value" th:value="${userSet.cokingCoal[0]}" th:name="cokingCoal[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.cokingCoal[1]}" th:name="cokingCoal[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.cokingCoal[2]}" th:name="cokingCoal[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Уголь каменный</p>
+						<input type="number" class="value" th:value="${userSet.coal[0]}" th:name="coal[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.coal[1]}" th:name="coal[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.coal[2]}" th:name="coal[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Газ природный</p>
+						<input type="number" class="value" th:value="${userSet.naturalGas[0]}" th:name="naturalGas[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.naturalGas[1]}" th:name="naturalGas[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.naturalGas[2]}" th:name="naturalGas[2]" step="0.001" required>
+					</div>
+
+					<div class="settings-row">
+						<p class="value">Дрова для отопления</p>
+						<input type="number" class="value" th:value="${userSet.firewood[0]}" th:name="firewood[0]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.firewood[1]}" th:name="firewood[1]" step="0.001" required>
+						<input type="number" class="value" th:value="${userSet.firewood[2]}" th:name="firewood[2]" step="0.001" required>
+					</div>
+				</form>
+			</div>
+			<input type="submit" form="form" value="Сохранить" class="submit">
+		</div>
+    </div>
+</body>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Log In</title>
+	<link rel="stylesheet" type="text/css" href="/css/log_in_style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<script src="/js/log-in-script.js"></script>
+</head>
+<body>
+	<!-- <section>
+		<form th:method="POST" th:action="@{/logIn}" th:object="${user}">
+			<input type="text" placeholder="email" name="email">
+			<input type="text" placeholder="password" name="pass">
+
+			<input type="submit" value="log in">
+		</form>
+	</section> -->
+
+	<main>
+		<div class="register-form-container">
+			<div class="form-title">
+				<h1 class="head-title">Авторизация</h1>
+				<!-- <p class="sub-title">в личный кабинет</p> -->
+			</div>
+				
+			<div class="form-fields">
+				<form method="post">
+					<div class="form-field">
+						<input type="text" name="email" class="form-input" id="email" placeholder="Эл.почта">
+					</div>
+
+					<div class="form-field" id="password">
+						<input type="password" name="pass" class="form-input" id="pass" placeholder="Пароль">
+						<a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+					</div>
+					<div class="form-links">
+						<!-- <div class="post-form-info">
+							Нет аккаунта? <a href="./registration" class="register">Зарегистрироваться</a>
+						</div> -->
+		
+						<div class="post-form-info">
+							<a href="#" class="reset-pass" onclick="return forget_login_password()">Забыли логин/Пароль</a>
+						</div>
+						
+						<div class="forget-login-password" id="forget-login-password">
+							<p class="forget-login-password-text" id="forget-login-password-text">Обратитесь к администратору для восстановления</p>
+							<a href="#" class="forget-cross" onclick="return hide_forget_text()"></a>
+						</div>
+
+					</div>
+	
+					<div class="form-submit">
+						<input type="submit" value="Войти" class="form-button">
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</main>
+</body>
+</html>

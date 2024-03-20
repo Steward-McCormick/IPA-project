@@ -10,33 +10,34 @@ public class Settings {
 	// Settings values
 	// Array of settings values [TNV, k1, k2]
 	
-	private Double[] rawOil; // сырая нефть
+	private Double[] rawOil = new Double[3]; // сырая нефть
 	
-	private Double[] gasCondensate; // газовый конденсат
+	private Double[] gasCondensate  = new Double[3]; // газовый конденсат
 	
-	private Double[] automobilesGasoline; // бензин автомобильный
+	private Double[] automobilesGasoline  = new Double[3]; // бензин автомобильный
 	
-	private Double[] dieselFuel; // дизельное топливо
+	private Double[] dieselFuel  = new Double[3]; // дизельное топливо
 	
-	private Double[] lightingKerosene; // Керосин осветительный и пр.
+	private Double[] lightingKerosene  = new Double[3]; // Керосин осветительный и пр.
 	
-	private Double[] fuelOil; // Топливо нефтяное(мазут)
+	private Double[] fuelOil  = new Double[3]; // Топливо нефтяное(мазут)
 	
-	private Double[] propaneAndButane; // Пропан и бутан сж.
+	private Double[] propaneAndButane  = new Double[3]; // Пропан и бутан сж.
 	
-	private Double[] compressedHydrocarbonGases; // Углеводородные газы сж.
+	private Double[] compressedHydrocarbonGases  = new Double[3]; // Углеводородные газы сж.
 	
-	private Double[] bitumen; // Битум нефтяной и сланцевый
+	private Double[] bitumen  = new Double[3]; // Битум нефтяной и сланцевый
 	
-	private Double[] cokingCoal; // Коксующийся уголь
+	private Double[] cokingCoal  = new Double[3]; // Коксующийся уголь
 	
-	private Double[] coal; // Уголь каменный
+	private Double[] coal  = new Double[3]; // Уголь каменный
 	
-	private Double[] naturalGas; // Газ природный
+	private Double[] naturalGas  = new Double[3]; // Газ природный
 	
-	private Double[] firewood; // Дрова для отопления
+	private Double[] firewood  = new Double[3]; // Дрова для отопления
 	
-	public Settings() {};
+	public Settings() {
+	};
 	
 	public Settings(int userId) {
 		//this.settingsId = settingsId;
