@@ -37,19 +37,23 @@ public class IndexCalculateController {
 		this.settingsService = settingsService;
 	}
 	
-	@GetMapping
-	public String index(Model model) {
+	@GetMapping()
+	public String index(Model model, String success) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserIpaDetails details = (UserIpaDetails) authentication.getPrincipal();
 		User user = details.getUser();
 		model.addAttribute("user", user);
 		
-		return "main_page";
+		if(success == null) {
+			return "main_page";
+		}
+		
+		return "main_succsess_page";
 	}
 	
 	@GetMapping("/login")
 	public String login() {
-		return "/login";
+		return "logIn";
 	}
 	
 	@GetMapping("/history/{id}")
@@ -62,6 +66,7 @@ public class IndexCalculateController {
 		}
 		
 		model.addAttribute("calcList", list);
+		model.addAttribute("id", id);
 		
 		return "history_page";
 	}
@@ -79,7 +84,7 @@ public class IndexCalculateController {
 	
 	@PostMapping("/settings/{id}")
 	public String settings(@ModelAttribute("settings") Settings settings, @PathVariable("id") int userId) {
-settings.setUserId(userId);
+		settings.setUserId(userId);
 		
 		settingsService.update(settings, settings.getSettingsId());
 		

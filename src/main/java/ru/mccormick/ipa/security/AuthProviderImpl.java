@@ -28,11 +28,12 @@ public class AuthProviderImpl implements AuthenticationProvider {
 		String email = authentication.getName();
 		
 		UserDetails userDetails = service.loadUserByUsername(email);
-		
+
 		String password = authentication.getCredentials().toString();
 		
-		if(!password.equals(userDetails.getPassword()))
+		if(!password.equals(userDetails.getPassword())) {
 			throw new BadCredentialsException("Incorrect password");
+		}
 		
 		return new UsernamePasswordAuthenticationToken(userDetails, password, Collections.emptyList());
 	}
@@ -41,5 +42,4 @@ public class AuthProviderImpl implements AuthenticationProvider {
 	public boolean supports(Class<?> authentication) {
 		return true;
 	}
-	
 }

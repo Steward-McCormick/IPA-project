@@ -18,7 +18,7 @@ public class Calculation {
 	
 	public Calculation() {}
 	
-	public Calculation(int userId, int calculationResult) {
+	public Calculation(int userId, double calculationResult) {
 		this.userId = userId;
 		this.calculationResult = calculationResult;
 		//this.calculationDate = calculationDate;

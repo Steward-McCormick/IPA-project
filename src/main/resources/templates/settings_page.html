@@ -26,13 +26,14 @@
 						<p style="font-size: 20px; margin-left: 9px;">Расчет</p>
 					</div>
 				</a>
-				<div class="sidebar-field" style="cursor: default; background: #d5d5d5;">
-					<img src="/svg/history.svg" class="sidebar-field-img">
-					<p style="font-size: 20px; margin-left: 9px;">История</p>
-				</div>
+				<a th:href="@{/history/{id}(id=${id})}" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/history.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">История</p>
+					</div>
 				</a>
 				<a href="#" style="text-decoration: none; color: black;">
-					<div class="sidebar-field">
+					<div class="sidebar-field"  style="cursor: default; background: #d5d5d5;">
 						<img src="/svg/settings.svg" class="sidebar-field-img">
 						<p style="font-size: 20px; margin-left: 9px;">Настройки</p>
 					</div>

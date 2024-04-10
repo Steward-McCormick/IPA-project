@@ -4,7 +4,7 @@ public enum Unit {
 	TONS ("Тонны/год"),
 	CUBIC_METERS ("м3/год");
 	
-	private String title;
+	private final String title;
 	
 	Unit(String title) {
 		this.title = title;

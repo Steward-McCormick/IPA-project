@@ -32,7 +32,7 @@
 					<p style="font-size: 20px; margin-left: 9px;">История</p>
 				</div>
 				</a>
-				<a href="#" style="text-decoration: none; color: black;">
+				<a th:href="@{/settings/{id}(id=${id})}" style="text-decoration: none; color: black;">
 					<div class="sidebar-field">
 						<img src="/svg/settings.svg" class="sidebar-field-img">
 						<p style="font-size: 20px; margin-left: 9px;">Настройки</p>
@@ -73,7 +73,7 @@
 									<p class="value" th:text="${values.unit}">тонн/год</p>
 								</div>
 							</div>
-							<p th:text="${calc.calculationResult}">45678</p>
+							<p th:text="${calc.calculationResult}"></p>
 						</div>
 
 						<br>

@@ -55,7 +55,7 @@ public class SettingsDAOImpl implements SettingsDAO {
 		String query = "INSERT INTO Settings("
 				+ "user_id, raw_oil, gas_condensate, automobiles_gasoline, diesel_fuel, lighting_kerosene, fuel_oil, "
 				+ "propane_and_butane, compressed_hc_gases, bitumen, coking_coal, coal, natural_gas, firewood) "
-				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE settings_id=?";
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			

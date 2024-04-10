@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru" id="html">
+<head>
+
+</head>
+
+
+<body>
+	<form th:object="${user}" th:method="POST" th:action="@{/user/create}">
+		<input type="email" th:field="*{email}" th:text="email">
+		<input type="text" th:field="*{password}" th:text="password">
+		<input type="submit">
+	</form>
+</body>
+</html>

@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -34,26 +35,20 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-		UserDetails admin = User.builder().username("admin").password(encoder.encode("admin")).build();
-		UserDetails user = User.builder().username("user").password(encoder.encode("user")).build();
-		
-		return new InMemoryUserDetailsManager(admin, user);
-	}
-	
-	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.csrf().disable()
 				.authorizeHttpRequests( (auth) -> 
-					auth.requestMatchers("/js/**", "/css/**", "/svg/**").permitAll()
-					.requestMatchers("/calculate", "/", "/history/**", "/settings/**").authenticated())
+					auth.requestMatchers("/js/**", "/css/**", "/svg/**", "/user/**", "/login ", "/").permitAll()
+					.requestMatchers("/calculate/**", "/", "/history/**", "/settings/**").authenticated())
 					.formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
 					.formLogin(
 						form -> form
 								.loginPage("/login")
-								.loginProcessingUrl("/login")
+								.loginProcessingUrl("/login_p")
+								.failureUrl("/login?error")
 								.usernameParameter("email")
 								.passwordParameter("pass")
+								.defaultSuccessUrl("/")
 								.permitAll()
 				).logout(
 						logout -> logout
@@ -65,6 +60,6 @@ public class SecurityConfig {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+		return NoOpPasswordEncoder.getInstance();
 	}
 }

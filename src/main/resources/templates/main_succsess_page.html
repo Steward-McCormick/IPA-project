@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru" id="html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="/css/main_succsess_page_style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="main-page">
+	<div class="main-page">
+		<div class="left-sidebar" id="left-sidebar">
+			<div class="employee-block">
+				<div class="employee-avatar">
+					<img src="/svg/employee.svg" style="height: 50px; width: 50px;">
+				</div>
+				<p style="font-size: 20px; margin-left: 10px;">Employee</p>
+			</div>
+
+			<div class="sidebar-fields">
+				<div class="sidebar-field" style="cursor: default; background: #d5d5d5;">
+					<img src="/svg/calculation.svg" class="sidebar-field-img">
+					<p style="font-size: 20px; margin-left: 9px;">Расчет</p>
+				</div>
+				<a href="#" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/history.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">История</p>
+					</div>
+				</a>
+				<a href="#" style="text-decoration: none; color: black;">
+					<div class="sidebar-field">
+						<img src="/svg/settings.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Настройки</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="exit-field">
+				<div class="sidebar-exit">
+					<img src="/svg/exit.svg" class="sidebar-field-img">
+					<p style="font-size: 20px; margin-left: 9px;">Выход</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="calculation-area">
+			<p class="main-header">Главная страница</p>
+
+			<div class="succsess-field">
+				<p>Расчет успешно выполнен.</p>
+				<p>Посмотреть результат Вы можете в <a th:href="@{/history/{id}(id=${user.userId})}">истории.</a></p>
+				<br>
+				<a th:href="@{/}"><p>Вернуться на главную страницу.</p></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

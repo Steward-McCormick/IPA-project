@@ -54,7 +54,7 @@
 			<p class="main-header">Главная страница</p>
 
 			<div class="calculation-form" id="calculation-form">
-				<form class="form" method="POST" action="/calculate" id="form">
+				<form class="form" th:method="POST" th:action="@{/calculate/{id}(id=${user.userId})}" id="form">
 					<div class="calculation-form-fields">
 						<select class="form-field" id="consumer" name="consumer" required>
 							<option style="display: none;" value="">Потребитель</option>

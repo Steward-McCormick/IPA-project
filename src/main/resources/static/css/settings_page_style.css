@@ -33,7 +33,7 @@ input {
 	border-bottom: 2px solid #878787;
 	outline: none;
 	transition: 0.3s;
-	background: #EAEAEA;
+	background: #F4F4F4;
 }
 
 .main-page {
@@ -141,7 +141,7 @@ input {
 
 .settings-field {
     width: 100%;
-    margin-left: 15px;
+    margin-left: 25px;
     margin-right: 180px;
 }
 
@@ -149,7 +149,7 @@ input {
 	font-size: 36px; 
 	font-weight: 700; 
 	min-width: 360px;
-	margin-left: 60px;
+	margin-left: 35px;
 	margin-top: 40px;
 	margin-bottom: 65px;
 }
@@ -159,7 +159,7 @@ input {
 	flex-direction: column;
 	width: 100%;
 	min-width: 720px;
-	background: #EAEAEA;
+	background: #F4F4F4;
 	border-radius: 20px;
 	padding-top: 16px;
 	padding-bottom: 16px;
