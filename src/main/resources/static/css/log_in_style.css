@@ -99,6 +99,14 @@ body{
 	text-align: center;
 }
 
+.auth-error {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: red;
+	margin-bottom: 16px;
+}
+
 .form-submit {
 	display: flex;
 	width: 308px;

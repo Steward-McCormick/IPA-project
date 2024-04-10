@@ -25,6 +25,10 @@
 				<h1 class="head-title">Авторизация</h1>
 				<!-- <p class="sub-title">в личный кабинет</p> -->
 			</div>
+
+			<div class="auth-error" th:if="${error}">
+				<p style="margin: 0">Неверный email или пароль</p>
+			</div>
 				
 			<div class="form-fields">
 				<form method="POST" action="/login_p" id="form">

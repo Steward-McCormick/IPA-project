@@ -7,10 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import ru.mccormick.ipa.models.Calculation;
 import ru.mccormick.ipa.models.CalculationValues;
@@ -52,7 +49,10 @@ public class IndexCalculateController {
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(@RequestParam(name = "error", required = false) String error, Model model) {
+		if (error != null) {
+			model.addAttribute("error", true);
+		}
 		return "logIn";
 	}
 	
@@ -63,6 +63,7 @@ public class IndexCalculateController {
 		for(Calculation calc : list) {
 			List<CalculationValues> values = calculationValuesService.getValuesList(calc.getCalculationId());
 			calc.setCalculationValues(values);
+			System.out.println(calc.getCalculationResult());
 		}
 		
 		model.addAttribute("calcList", list);

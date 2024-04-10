@@ -20,7 +20,7 @@ public class CalculationValuesMapper implements RowMapper<CalculationValues>  {
 		values.setCalculationId(rs.getInt("calculation_id"));
 		values.setConsumer(Consumer.fromString(rs.getString("consumer")));
 		values.setFuelType(FuelType.fromString(rs.getString("fuel_type")));
-		values.setAmount(rs.getInt("amount"));
+		values.setAmount(rs.getDouble("amount"));
 		values.setUnit(Unit.fromString(rs.getString("unit")));
 		
 		return values;
