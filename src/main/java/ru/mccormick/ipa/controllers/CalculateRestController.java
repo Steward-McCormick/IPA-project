@@ -58,7 +58,7 @@ public class CalculateRestController {
 		
 		System.out.println(builder.getConsumer() + ", " + builder.getFuelType());
 		
-		response.sendRedirect("/?succsess=true");
+		response.sendRedirect("/?success");
 	}
 
 	private String decode(String value) throws UnsupportedEncodingException {

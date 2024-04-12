@@ -34,24 +34,32 @@ public class IndexCalculateController {
 		this.settingsService = settingsService;
 	}
 	
-	@GetMapping()
-	public String index(Model model, String success) {
+	@GetMapping("/")
+	public String index(@RequestParam(name = "success", required = false) String success,
+						Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserIpaDetails details = (UserIpaDetails) authentication.getPrincipal();
-		User user = details.getUser();
-		model.addAttribute("user", user);
-		
+
+		if (authentication.getName().equals("anonymousUser")) return "logIn";
+		else model.addAttribute("user", getAuthenticatedUser(authentication));
+
 		if(success == null) {
 			return "main_page";
 		}
 		
-		return "main_succsess_page";
+		return "main_success_page";
 	}
-	
+
+	private User getAuthenticatedUser(Authentication auth) {
+		UserIpaDetails details = (UserIpaDetails) auth.getPrincipal();
+
+		return details.getUser();
+	}
+
 	@GetMapping("/login")
 	public String login(@RequestParam(name = "error", required = false) String error, Model model) {
 		if (error != null) {
 			model.addAttribute("error", true);
+			System.out.println(error);
 		}
 		return "logIn";
 	}
