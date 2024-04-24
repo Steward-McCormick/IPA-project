@@ -24,13 +24,13 @@
 					<img src="/svg/calculation.svg" class="sidebar-field-img">
 					<p style="font-size: 20px; margin-left: 9px;">Расчет</p>
 				</div>
-				<a href="#" style="text-decoration: none; color: black;">
+				<a th:href="@{\history\{id}(id=${user.userId})}" style="text-decoration: none; color: black;">
 					<div class="sidebar-field">
 						<img src="/svg/history.svg" class="sidebar-field-img">
 						<p style="font-size: 20px; margin-left: 9px;">История</p>
 					</div>
 				</a>
-				<a href="#" style="text-decoration: none; color: black;">
+				<a th:href="@{\settings\{id}(id=${user.userId})}" style="text-decoration: none; color: black;">
 					<div class="sidebar-field">
 						<img src="/svg/settings.svg" class="sidebar-field-img">
 						<p style="font-size: 20px; margin-left: 9px;">Настройки</p>
@@ -39,10 +39,12 @@
 			</div>
 
 			<div class="exit-field">
-				<div class="sidebar-exit">
-					<img src="/svg/exit.svg" class="sidebar-field-img">
-					<p style="font-size: 20px; margin-left: 9px;">Выход</p>
-				</div>
+				<a th:href="@{/logout}" style="width: 100%; text-decoration: none; color: black;">
+					<div class="sidebar-exit">
+						<img src="/svg/exit.svg" class="sidebar-field-img">
+						<p style="font-size: 20px; margin-left: 9px;">Выход</p>
+					</div>
+				</a>
 			</div>
 		</div>
 

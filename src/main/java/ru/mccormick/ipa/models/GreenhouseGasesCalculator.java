@@ -68,11 +68,9 @@ public class GreenhouseGasesCalculator {
 		
 		System.out.println(TNV + ", " + k1 + ", " + k2 + ", " + amount);
 		double v = (amount * k1 * TNV * k2 * (44.0 / 12.0)) / 1000.0;
-		System.out.println(v);
 
 		BigDecimal bigDecimal = new BigDecimal(v).setScale(2, RoundingMode.HALF_UP);
-		System.out.println(bigDecimal.doubleValue());
-		
+
 		return bigDecimal.doubleValue();
 	}
 	

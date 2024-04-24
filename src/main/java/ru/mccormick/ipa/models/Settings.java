@@ -45,8 +45,8 @@ public class Settings {
 		
 		// setting default values
 		this.setRawOil(new Double[] {49.12, 0.995, 20.31});
-		this.setGasCondensate(new Double[] {40.12, 0.995, 19.13});
-		this.setAutomobilesGasoline(new Double[] {44.21, 0.995, 19.12});
+		this.setGasCondensate(new Double[] {40.12, 0.995, 20.31});
+		this.setAutomobilesGasoline(new Double[] {44.21, 0.995, 19.13});
 		this.setDieselFuel(new Double[] {43.02, 0.995, 19.98});
 		this.setLightingKerosene(new Double[] {44.75, 0.99, 19.6});
 		this.setFuelOil(new Double[] {41.15, 0.99, 20.84});

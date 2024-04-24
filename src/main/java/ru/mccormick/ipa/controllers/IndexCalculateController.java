@@ -59,7 +59,6 @@ public class IndexCalculateController {
 	public String login(@RequestParam(name = "error", required = false) String error, Model model) {
 		if (error != null) {
 			model.addAttribute("error", true);
-			System.out.println(error);
 		}
 		return "logIn";
 	}

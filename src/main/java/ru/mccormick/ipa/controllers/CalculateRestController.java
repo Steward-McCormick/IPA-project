@@ -26,16 +26,21 @@ import ru.mccormick.ipa.services.CalculationValuesService;
 @RestController
 public class CalculateRestController {
 
-	@Autowired
-	private CalculationService calculationService;
+	private final CalculationService calculationService;
 	
-	@Autowired
-	private CalculationValuesService calculationValuesService;
+	private final CalculationValuesService calculationValuesService;
 	
+	private final GreenhouseGasesCalculator calculator;
+
 	@Autowired
-	private GreenhouseGasesCalculator calculator;
-	
-		
+	public CalculateRestController(CalculationService calculationService,
+								   CalculationValuesService calculationValuesService,
+								   GreenhouseGasesCalculator calculator) {
+		this.calculationService = calculationService;
+		this.calculationValuesService = calculationValuesService;
+		this.calculator = calculator;
+	}
+
 	@PostMapping("/calculate/{id}")
 	public void calculate(@RequestBody String request, @ModelAttribute("builder") CalculationValuesListBuilder builder, 
 							@PathVariable("id") int id, HttpServletResponse response) throws IOException {
@@ -46,18 +51,12 @@ public class CalculateRestController {
 		
 		calculator.setCalculationValues(values);
 		calculator.setUserId(id);
-		
-		System.out.println(id);
-		
-		Calculation calculation = calculator.getCalculation();
 
-		System.out.println(calculation.getCalculationResult());
+		Calculation calculation = calculator.getCalculation();
 
 		int calculationId = calculationService.save(calculation);
 		calculationValuesService.saveCalculationValuesList(values, calculationId);
-		
-		System.out.println(builder.getConsumer() + ", " + builder.getFuelType());
-		
+
 		response.sendRedirect("/?success");
 	}
 
