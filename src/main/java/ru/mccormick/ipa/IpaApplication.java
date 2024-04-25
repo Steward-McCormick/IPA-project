@@ -13,7 +13,7 @@ import ru.mccormick.ipa.services.UserService;
 import ru.mccormick.ipa.utils.UnitConverter.UnitConverter;
 
 @SpringBootApplication
-public class IpaApplication implements CommandLineRunner {
+public class IpaApplication {
 
 	private final UserService userService;
 
@@ -24,12 +24,5 @@ public class IpaApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IpaApplication.class, args);
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		if (userService.findByEmail("qwerty@mail.ru") == null) {
-			userService.save(new User("qwerty@mail.ru", "qwerty"));
-		}
 	}
 }
